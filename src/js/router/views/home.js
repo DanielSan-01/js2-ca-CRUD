@@ -19,10 +19,11 @@ export async function home() {
  // container.innerHTML = `<p>test</p>`
 
   console.log(posts);
-  const card = document.createElement("a")
-  card.classList.add("postCard")
-  const singlePost = posts.forEach(post => {
-    console.log(post.title)
+    const singlePost = posts.forEach(post => {
+    const card = document.createElement("a")
+    card.classList.add("postCard")
+
+    console.log(post.id)
     card.href = `./post/?id=${post.id}`
     const cardTitle = document.createElement("h2")
     cardTitle.innerText = `${post.title}`
@@ -35,9 +36,9 @@ export async function home() {
     }
     card.append(cardTitle, cardBody, cardMedia)
     container.append(card)
-
     //console.log(post.id);
   });
+
 
 
   
