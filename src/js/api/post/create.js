@@ -8,6 +8,18 @@ export async function createPost(event) {
 
   const title = document.getElementById("title").value
   const body = document.getElementById("body").value
+  const mediaURL = document.getElementById("mediaURL").value
+  const mediaALT = document.getElementById("mediaALT").value
+
+  const media = mediaURL ? {url: mediaURL, alt: mediaALT} : null;
+
+  const postData = {
+    title,
+    body
+  }
+  if (media){
+    postData.media=media;
+  }
 
   const response = await fetch(`https://v2.api.noroff.dev/social/posts`, {
     method: 'POST',
@@ -16,7 +28,7 @@ export async function createPost(event) {
       'Authorization': `Bearer ${token}`,
       'X-Noroff-API-Key': `${apiKey}`
     },
-    body: JSON.stringify({title, body})
+    body: JSON.stringify(postData)
   })
 
   const newPostData = await response.json()
