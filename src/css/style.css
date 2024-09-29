@@ -1,0 +1,12 @@
+@import url(_reset.css);
+
+.postCard{
+  color: black;
+  text-decoration: none;
+}
+
+.mediaCard {
+  max-width: 600px;
+  max-height: 600px;
+  object-fit: contain;
+}
