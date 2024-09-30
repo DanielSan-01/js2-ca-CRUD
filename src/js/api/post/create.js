@@ -1,10 +1,8 @@
 export async function createPost(event) {
   event.preventDefault()
 
-
   const token = localStorage.getItem('token')
   const apiKey = localStorage.getItem('apiKey')
-
 
   const title = document.getElementById("title").value
   const body = document.getElementById("body").value
@@ -31,16 +29,23 @@ export async function createPost(event) {
     body: JSON.stringify(postData)
   })
 
-  const newPostData = await response.json()
-  console.log(newPostData);
+  const errorMessage = document.getElementById("error")
+  errorMessage.innerHTML = ""
 
-  if (response.ok) {
-    console.log("Sucsessfully created new post", newPostData);
+  const data = await response.json()
+
+  if(data.errors) {
+    const errorsArray = data.errors
+    errorsArray.forEach((error) => {
+      const errorPTag = document.createElement("p")
+      errorPTag.innerText = error.message
+      errorMessage.appendChild(errorPTag)
+    })
   } else {
-    console.log('New post failed', newPostData);
+    const newPostData = data.data;
+    console.log(newPostData);
+    window.location.href = `/post/?id=${newPostData.id}`
   }
-
-
 }
 //createPost()
 
