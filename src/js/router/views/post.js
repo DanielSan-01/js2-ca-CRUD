@@ -1,7 +1,4 @@
-//alert("Single Post Page");
-
 //fetch single post with spesific ID
-
 export async function singlePost() {
   const token = localStorage.getItem('token')
   const apiKey = localStorage.getItem('apiKey')
@@ -21,12 +18,6 @@ export async function singlePost() {
   
   const data = singlePostData.data
   //console.log(data.title);
-  /* const editButton = document.getElementById("editButton")
-  const ancorTag = document.createElement("a")
-  ancorTag.innerText = "Edit"
-  ancorTag.href = `/post/edit/`
-  editButton.append(ancorTag) */
-
 
   const container = document.getElementById("displaySinglePost");
 

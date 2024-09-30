@@ -17,24 +17,24 @@ export async function deletePost() {
         'X-Noroff-API-Key': `${apiKey}`
       },
     }) 
-    
+
     if (response.ok){
       alert("succsesfully deleted post")
       window.location.href = "/";
     } else {
     const data = await response.json();
     console.log(data);
-    if (data.errors){
-      const errorsArray = data.errors
-      errorsArray.forEach((error) => {
+      if (data.errors){
+        const errorsArray = data.errors
+        errorsArray.forEach((error) => {
+          const errorPTag = document.createElement("p")
+          errorPTag.innerText = error.message
+          errorMessage.appendChild(errorPTag)
+        })
+      } else {
         const errorPTag = document.createElement("p")
-        errorPTag.innerText = error.message
+        errorPTag.innerText = "An error occurred, refresh and please try again."
         errorMessage.appendChild(errorPTag)
-      })
-    } else {
-      const errorPTag = document.createElement("p")
-      errorPTag.innerText = "An error occurred, refresh and please try again."
-      errorMessage.appendChild(errorPTag)
-    }
+      }
   }
 }

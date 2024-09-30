@@ -16,6 +16,7 @@ export async function updatePostData(event) {
   const mediaALT = document.getElementById("mediaALT").value
 
   const errorMessage = document.getElementById("error")
+  errorMessage.innerHTML = ""
 
   const updataDataSomething = {
     "title": title,
@@ -56,5 +57,4 @@ document.getElementById("editPost").addEventListener("submit", updatePostData)
 //remember to add errorhandeling and validation message :)
 
 const button = document.getElementById("deleteButton")
-
 button.addEventListener("click", deletePost)

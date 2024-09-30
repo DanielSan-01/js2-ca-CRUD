@@ -5,7 +5,8 @@ export async function login(event) {
   event.preventDefault();
   const email = document.querySelector("#email").value
   const password = document.querySelector("#password").value
-  console.log(email);
+  const errorMessage = document.getElementById("error")
+  errorMessage.innerHTML = ""
 
   const response = await fetch(`https://v2.api.noroff.dev/auth/login`, {
     method: 'POST',
@@ -14,18 +15,23 @@ export async function login(event) {
     }, 
     body: JSON.stringify({email, password})
   });
-
   const loginData = await response.json();
-  console.log(loginData.data);
 
   if (response.ok) {
     localStorage.setItem('token', loginData.data.accessToken);
-    console.log(loginData.data.accessToken);
     await getKey();
-    console.log('Login successful', loginData);
-
+    window.location.href = "/"
+  } else if (loginData.errors) {
+      const errorsArray = loginData.errors
+      errorsArray.forEach((error) => {
+        const errorPTag = document.createElement("p")
+        errorPTag.innerText = error.message
+        errorMessage.appendChild(errorPTag)
+      });
   } else {
-    console.log('Login Failed', loginData);
+    const errorPTag = document.createElement("p")
+    errorPTag.innerText = "An error occurred, refresh and please try again."
+    errorMessage.appendChild(errorPTag)
   }
 
 }
