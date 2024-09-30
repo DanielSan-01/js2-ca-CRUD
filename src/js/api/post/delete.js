@@ -1,3 +1,12 @@
+/**
+ * Deletes a post by its ID stored in localStorage and redirects to the home page upon success.
+ * If there are errors during the deletion process, they are displayed in the error container.
+ *
+ * @async
+ * @function deletePost
+ * @returns {Promise<void>} - Returns nothing but may redirect the user to the home page on success.
+ * @throws Will display errors if the API request fails or if there are validation errors.
+ */
 export async function deletePost() {
   /* const queryParams = new URLSearchParams(window.location.search)
   const postID = queryParams.get("id") */
