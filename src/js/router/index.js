@@ -2,6 +2,10 @@
 // In order to add additional pages, you will need to implement them below
 // You may change the behaviour or approach of this file if you choose
 export default async function router(pathname = window.location.pathname) {
+  /* const queryParams = new URLSearchParams(window.location.search)
+  const postID = queryParams.get("id")
+  console.log(postID); */
+
   switch (pathname) {
     case "/":
       await import("./views/home.js");

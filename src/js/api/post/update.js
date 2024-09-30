@@ -1,4 +1,8 @@
-export async function updatePost(id, { title, body, tags, media }) {}
+export async function updatePost() {
+  const currentPostData = localStorage.getItem("postToEdit")
+  console.log(currentPostData);
+}
+updatePost();
 
 
 

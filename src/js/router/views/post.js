@@ -1,4 +1,4 @@
-alert("Single Post Page");
+//alert("Single Post Page");
 
 //fetch single post with spesific ID
 
@@ -21,6 +21,12 @@ export async function singlePost() {
   
   const data = singlePostData.data
   //console.log(data.title);
+  /* const editButton = document.getElementById("editButton")
+  const ancorTag = document.createElement("a")
+  ancorTag.innerText = "Edit"
+  ancorTag.href = `/post/edit/`
+  editButton.append(ancorTag) */
+
 
   const container = document.getElementById("displaySinglePost");
 
@@ -35,5 +41,16 @@ export async function singlePost() {
     media.classList.add("singlePostIMG")
   }
   container.append(title, body, media);
+
+  const buttonDiv = document.getElementById("editButton")
+  const editButton = document.createElement("a")
+  editButton.href = `/post/edit/`
+  editButton.innerText = "Edit"
+  editButton.addEventListener("click", () => {
+    localStorage.setItem("postToEdit", JSON.stringify({id:postID, ...data}))
+
+  });
+  buttonDiv.append(editButton);
 }
+
 singlePost()

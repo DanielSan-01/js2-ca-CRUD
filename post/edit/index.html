@@ -11,8 +11,33 @@
   <body>
     <h1>Edit Post</h1>
 
-    <form name="editPost">
-      <button>Edit Post</button>
+    <form name="editPost" id="editPost">
+      <label for="title">Title</label>
+      <input type="text" id="title">
+
+      <label for="body">Content</label>
+      <input type="text" id="body">
+      
+      <label for="mediaURL">media URL</label>
+      <input type="text" id="mediaURL">
+      <label for="mediaALT">media altext</label>
+      <input type="text" id="mediaALT">
+      
+      <button>Save</button>
     </form>
+    <button id="deleteButton">Delete</button>
+
+    <div id="error"></div>
   </body>
 </html>
+
+
+<!-- id's
+
+
+title
+body
+mediaURL
+mediaALT
+ 
+-->
