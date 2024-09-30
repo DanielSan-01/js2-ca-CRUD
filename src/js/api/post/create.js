@@ -1,3 +1,14 @@
+/**
+ * Handles post creation by submitting a form with the provided title, body, and optional media.
+ * The post data is sent to the API via a POST request. If successful, the user is redirected
+ * to the new post's page. If there are errors, they are displayed on the page.
+ *
+ * @async
+ * @function createPost
+ * @param {Event} event - The form submission event.
+ * @returns {Promise<void>} - Returns nothing but may redirect the user to the newly created post.
+ * @throws Will display errors if the API request fails or if the form is not filled correctly.
+ */
 export async function createPost(event) {
   event.preventDefault()
 
